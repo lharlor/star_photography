@@ -5,36 +5,71 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseAdmin = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL || '',
     process.env.SUPABASE_SERVICE_ROLE_KEY || ''
-);
+)
+
+export async function getStaticProps() {
+
+    const { data } = await supabaseAdmin.storage.from("image-bucket").list();
+
+    return {
+        props: {
+            images: data,
+        },
+    }
+}
 
 function cn(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Gallery() {
+type Image = {
+    id: number
+    href: string 
+    imageSrc: string 
+    name: string 
+    username: string
+    width: string
+    height: string
+
+ }
+
+export function getImagePath({ image }: { image: Image }) {
+
+    const image_path = supabaseAdmin.storage.from("image-bucket").getPublicUrl(image.name);
+    return image_path.data.publicUrl;
+}
+
+export default function Gallery({ images }: {images: Image[]}) {
     return (
-        <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24
+       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24
         sm:px-6 lg:max-w-7xl lg:px-8">
             <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2
             gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                <BlurImage />
+                {images.map((image) => (
+                    <BlurImage key={image.id} image={
+                        
+                        getImagePath({ image })
+                        
+                } />
+                ))}
             </div>
-        </div>
+        </div> 
 
     );
 }
 
-function BlurImage() {
-    const [isLoading, setLoading] = useState(true);
+function BlurImage({ image }: {image: string}) {
+    const [isLoading, setLoading] = useState(true)
 
     return (
-        <a href="#" className="group">
+        <a href={image} className="group">
             <div className="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full
             overflow-hidden rounded-lg bg-gray-200">
                 <Image
                     alt=""
-                    src="https://bit.ly/placeholder-img"
-                    layout="fill"
+                    src={image}
+                    width="300"
+                    height="300"
                     objectFit="cover"
                     className={cn(
                         "group-hover:opacity-75 duration-700 ease-in-out",

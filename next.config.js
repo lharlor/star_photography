@@ -1,7 +1,6 @@
-/** @type {import('next').NextConfig} */
 module.exports = {
     reactStrictMode: true,
     images: {
-        domains: ['bit.ly'],
+        domains: ['app.supabase.com', 'supabase.com', 'mphoimujumzasrbtyzhr.supabase.co'],
     },
-}
+};
