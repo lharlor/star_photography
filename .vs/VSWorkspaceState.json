@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\pages",
+    "\\pages\\api"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\pages\\index.tsx",
   "PreviewInSolutionExplorer": false
 }
