@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\pages",
     "\\pages\\api"
   ],
-  "SelectedNode": "\\pages\\index.tsx",
+  "SelectedNode": "\\.env.local",
   "PreviewInSolutionExplorer": false
 }
