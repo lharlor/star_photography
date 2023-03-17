@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\pages\\api"
+    "\\lib",
+    "\\pages",
+    "\\pages\\api",
+    "\\pages\\images"
   ],
-  "SelectedNode": "\\.env.local",
+  "SelectedNode": "\\LICENSE",
   "PreviewInSolutionExplorer": false
 }
