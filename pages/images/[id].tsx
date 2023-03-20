@@ -1,16 +1,26 @@
 import Image from 'next/image';
 import { useState } from 'react'
-import { getImageData } from '../../lib/posts';
+import { getAllImageIds,getImageData } from '../../lib/images';
 
 
 export async function getStaticProps({ params }) {
     // Add the "await" keyword like this:
-    const imageData = await getImageData(params.id);
-
+    const imageData = await getImageData(params);
+    console.log(imageData);
     return {
         props: {
             imageData,
         },
+    };
+}
+
+export async function getStaticPaths() {
+    const images = getAllImageIds();
+    let sets = await images;
+
+    return {
+        paths: sets,
+        fallback: false,
     };
 }
 
