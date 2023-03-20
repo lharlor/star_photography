@@ -1,21 +1,22 @@
 import Image from 'next/image';
 import { useState } from 'react'
-import { getAllImageIds,getImageData } from '../../lib/images';
+import { getAllImageNames,getImageData } from '../../lib/images';
 
 
 export async function getStaticProps({ params }) {
     // Add the "await" keyword like this:
-    const imageData = await getImageData(params);
-    console.log(imageData);
+    const imageData = await getImageData(params.name);
+
     return {
         props: {
             imageData,
+            name: params,
         },
     };
 }
 
 export async function getStaticPaths() {
-    const images = getAllImageIds();
+    const images = getAllImageNames();
     let sets = await images;
 
     return {
@@ -30,7 +31,6 @@ function cn(...classes: string[]) {
 
 export default function BlurImage({ imageData }) {
     const [isLoading, setLoading] = useState(true)
-
     return (
         <a href={imageData} className="group">
             <div className="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full

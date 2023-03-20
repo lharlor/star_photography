@@ -21,7 +21,7 @@ export default function Gallery({ allImageData }: { allImageData: FileObject[] }
             gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 {allImageData.map(({ id, name }) => (
                     <li key={id}>
-                        <Link href={`/images/${id}`}>{name}</Link>
+                        <Link href={`/images/${name}`}>{name}</Link>
                     </li>
                 ))}
             </div>
