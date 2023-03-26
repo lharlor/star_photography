@@ -27,6 +27,6 @@ export async function getStaticPaths() {
 
 export default function BlurImage({ imageData }) {
     return (
-        <a>imageData</a>
+        <a>{imageData}</a>
     );
 }
