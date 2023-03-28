@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#myNav {
+    margin: 0px 0px 10px 0px;
+}
