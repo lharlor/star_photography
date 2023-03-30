@@ -3,9 +3,8 @@
     "",
     "\\lib",
     "\\pages",
-    "\\pages\\api",
-    "\\pages\\images"
+    "\\pages\\api"
   ],
-  "SelectedNode": "\\pages\\images\\[name].tsx",
+  "SelectedNode": "\\pages\\_app.tsx",
   "PreviewInSolutionExplorer": false
 }
