@@ -6,11 +6,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.13",
     "@nextui-org/react": "^1.0.0-beta.12",
     "@supabase/supabase-js": "^2.10.0",
     "aws-sdk": "^2.1333.0",
     "next": "latest",
-    "react": "18.2.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-dom": "18.2.0"
   },
   "devDependencies": {

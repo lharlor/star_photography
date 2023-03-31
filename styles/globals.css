@@ -4,9 +4,11 @@
 
 #myNav {
     margin: 0px 0px 10px 0px;
+    width:100%;
 }
 
 .grid {
     margin: 4px;
     padding: 2px;
 }
+
