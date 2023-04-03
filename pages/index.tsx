@@ -21,7 +21,19 @@ function cn(...classes: string[]) {
 export default function Gallery({ allImageData }: Array<string>) {
     const [isLoading, setLoading] = useState(true);
     const [visible, setVisible] = useState(false);
-    const handler = () => setVisible(true);
+
+
+    const [imageName, setImageName] = useState(false);
+    const [imageSrc, setImageSrc] = useState(false);
+    const [imageComments, setImageComments] = useState(false);
+
+    const handler = (name, imageSrc, comments) => {
+        console.log(name);
+        setVisible(true);
+        setImageName(name);
+        setImageSrc(imageSrc);
+        setImageComments(comments);
+    };
 
     const closeHandler = () => {
         setVisible(false);
@@ -42,7 +54,7 @@ export default function Gallery({ allImageData }: Array<string>) {
                                 src={imageSrc}
                                 width="500"
                                 height="500"
-                                onClick={()=>handler() }
+                                onClick={()=>handler(name,imageSrc,comments) }
                                 className={cn(
                                     "hover:opacity-70 group-hover:opacity-75 duration-700 ease-in-out",
                                     isLoading
@@ -63,16 +75,19 @@ export default function Gallery({ allImageData }: Array<string>) {
             >
                 <Modal.Header>
                     <Text id="modal-title" size={18}>
-                        Welcome to
-                        <Text b size={18}>
-                            NextUI
-                        </Text>
+                        {imageName}
                     </Text>
                 </Modal.Header>
                 <Modal.Body>
                     <Row justify="space-between">
-                        Image
+                        <Image
+                            alt=""
+                            src={imageSrc}
+                            width="1000"
+                            height="1000"
+                        />
                     </Row>
+                    {imageComments}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button auto flat color="error" onPress={closeHandler}>
