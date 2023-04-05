@@ -72,13 +72,14 @@ export default function Gallery({ allImageData }: Array<string>) {
                 aria-labelledby="modal-title"
                 open={visible}
                 onClose={closeHandler}
+                width="1200px"
             >
-                <Modal.Header>
+                <Modal.Header Justify="center" autoMargin>
                     <Text id="modal-title" size={18}>
                         {imageName}
                     </Text>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className="modalBody">
                     <Row justify="space-between">
                         <Image
                             alt=""
